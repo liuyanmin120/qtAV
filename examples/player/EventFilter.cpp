@@ -49,10 +49,10 @@ EventFilter::EventFilter(AVPlayer *player) :
 
 EventFilter::~EventFilter()
 {
-    if (menu) {
-        delete menu;
-        menu = 0;
-    }
+//     if (menu) {
+//         delete menu;
+//         menu = 0;
+//     }
 }
 
 void EventFilter::openLocalFile()
@@ -66,7 +66,10 @@ void EventFilter::openLocalFile()
 
 void EventFilter::openUrl()
 {
-    QString url = QInputDialog::getText(0, tr("Open an url"), tr("Url"));
+	QString url = "http://vfx.mtime.cn/Video/2019/03/19/mp4/190319212559089721.mp4";
+	if (url.isEmpty()) {
+		url = QInputDialog::getText(0, tr("Open an url"), tr("Url"));
+	}
     if (url.isEmpty())
         return;
     AVPlayer *player = static_cast<AVPlayer*>(parent());
