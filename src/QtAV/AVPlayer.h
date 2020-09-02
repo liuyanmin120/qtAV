@@ -606,6 +606,7 @@ Q_SIGNALS:
      */
     void internalSubtitleHeaderRead(const QByteArray& codec, const QByteArray& data);
     void internalSubtitlePacketRead(int track, const QtAV::Packet& packet);
+	void internalKeyFramePacketRead(const QtAV::Packet& packet);
 private Q_SLOTS:
     void loadInternal(); // simply load
     void playInternal(); // simply play
