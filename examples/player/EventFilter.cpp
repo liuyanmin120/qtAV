@@ -66,7 +66,7 @@ void EventFilter::openLocalFile()
 
 void EventFilter::openUrl()
 {
-	QString url = "http://vfx.mtime.cn/Video/2019/03/19/mp4/190319212559089721.mp4";
+	QString url;
 	if (url.isEmpty()) {
 		url = QInputDialog::getText(0, tr("Open an url"), tr("Url"));
 	}

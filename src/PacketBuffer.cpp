@@ -27,7 +27,7 @@ static const int kAvgSize = 16;
 PacketBuffer::PacketBuffer()
     : m_mode(BufferTime)
     , m_buffering(true) // in buffering state at the beginning
-    , m_max(1.5)
+    , m_max(5)// 1.5 modify by liuym solve long delay and drop frame bug
     , m_buffer(0)
     , m_value0(0)
     , m_value1(0)
