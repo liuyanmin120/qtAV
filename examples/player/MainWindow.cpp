@@ -202,7 +202,8 @@ void MainWindow::initPlayer()
     connect(mpVideoEQ, SIGNAL(saturationChanged(int)), this, SLOT(onSaturationChanged(int)));
 
     connect(mpCaptureBtn, SIGNAL(clicked()), mpPlayer->videoCapture(), SLOT(capture()));
-
+	mpPlayer->setBufferMode(QtAV::BufferTime);
+	mpPlayer->setBufferValue(Config::instance().bufferValue());
     emit ready(); //emit this signal after connection. otherwise the slots may not be called for the first time
 }
 
@@ -742,7 +743,7 @@ void MainWindow::play(const QString &name)
         mRepeateMax = 0;
     mpPlayer->setInterruptOnTimeout(Config::instance().abortOnTimeout());
     mpPlayer->setInterruptTimeout(Config::instance().timeout()*1000.0);
-    mpPlayer->setBufferMode(QtAV::BufferPackets);
+    mpPlayer->setBufferMode(QtAV::BufferTime);
     mpPlayer->setBufferValue(Config::instance().bufferValue());
     mpPlayer->setRepeat(mRepeateMax);
     mpPlayer->setPriority(idsFromNames(Config::instance().decoderPriorityNames()));
